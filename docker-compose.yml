@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - "27018:27017"
+    expose:
+      - "27018"
+  redis-server:
+    image: "redis"
+  app:
+    depends_on:
+      - mongo
+    restart: always
+    build: .
+    environment:
+      - PORT=5400
+      - MONGO_CONNECTION_STRING=mongodb://mongo:27018/fatura_auth
+      - REDIS_HOST=redis-server
+      - ACCESS_TOKEN_SECRET=ACCESS_TOKEN_SECRET
+      - ACCESS_TOKEN_EXPIRES_IN=15
+    ports:
+      - "5400:5400"
