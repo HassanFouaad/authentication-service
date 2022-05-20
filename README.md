@@ -39,7 +39,7 @@ Stateless session based authentication service to manage authentication services
 
 - Repositories layer works as an interface for the database models
 
-- The app creates jwt token with contains some userdata and the session id
+- The app creates jwt token which contains some userdata and the session id and sents it back to the client
 
 - The app stores valid sessions in redis key/value store with a referenece to each user
 
