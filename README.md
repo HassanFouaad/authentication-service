@@ -41,7 +41,7 @@ Stateless session based authentication service to manage authentication services
 
 - The app creates jwt token which contains some userdata and the session id and sents it back to the client
 
-- The app stores valid sessions in redis key/value store with a referenece to each user
+- The app stores valid sessions in redis key/value store with a referenece for each user
 
 - When the client tries to access protected route it firstly check the jwt token validation/expiration etc and then retrieves/checks the session from the redis store
 
@@ -49,7 +49,7 @@ Stateless session based authentication service to manage authentication services
 
 - If the protected route requires specific role/permission to be accessed, the application will compare this role/permission to the user role/allowed permissions
 
-- The app can force invalidating single or more sessions by destroys the session from the redis store
+- The app can force invalidating single or more sessions by destroys\ing the session from the redis store
 
 ## Installation
 
