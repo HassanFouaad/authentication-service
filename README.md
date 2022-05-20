@@ -5,7 +5,7 @@ Stateless session based authentication service to manage authentication services
 
 
 
-![App Screenshot](https://i.imgur.com/b9iufTZ.png)
+![App Screenshot](https://i.imgur.com/vXurx4O.png)
 
 
 ## Features
