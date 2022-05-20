@@ -66,7 +66,7 @@ Install dependencies
     ```
     Run production server
     ```bash
-    npm run build
+    npm run start
     ```
 ## Environment Variables
 
