@@ -5,8 +5,11 @@ Stateless session based authentication service to manage authentication services
 
 
 
-![App Screenshot](https://i.imgur.com/vXurx4O.png)
+![Testing screenshot](https://i.imgur.com/b9iufTZ.png)
 
+
+## 🔗 Links
+- [**Postman Collection**](https://documenter.getpostman.com/view/11631463/UyxnFR5F)
 
 ## Features
 
@@ -109,3 +112,14 @@ This will create the the application image and pull in the necessary dependencie
 - Node application image
 
 Once done, run the Docker image and map the port to whatever you wish on your host.
+## Screenshots
+
+#### Passed tests
+
+![Auth passed test](https://i.imgur.com/wsx6T8k.png)
+
+#### Postman api collection with examples
+
+![alt text](https://i.imgur.com/DXFfd0r.png)
+## 🔗 Postman Collection
+- https://documenter.getpostman.com/view/11631463/UyxnFR5F
