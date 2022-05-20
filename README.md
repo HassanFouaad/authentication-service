@@ -1,27 +1,22 @@
-
 # Authentication Service
 
 Stateless session based authentication service to manage authentication services
-
-
-
-
-
+![Testing screenshot](https://i.imgur.com/vXurx4O.png)
 
 ## 🔗 Links
+
 - [**Postman Collection**](https://documenter.getpostman.com/view/11631463/UyxnFR5F)
 
 ## Features
 
-- [x]  Authentication REST API's
-- [x]  Stateless authentication implementation
-- [x]  Sessions management
-    - Create new valid sessions
-    - One or more sessions invalidating
-- [x]  Role/Permissions based authorization
-- [x]  Dockerization
-- [x]  Unit testing
-
+- [x] Authentication REST API's
+- [x] Stateless authentication implementation
+- [x] Sessions management
+  - Create new valid sessions
+  - One or more sessions invalidating
+- [x] Role/Permissions based authorization
+- [x] Dockerization
+- [x] Unit testing
 
 ## Tech Stack
 
@@ -31,6 +26,7 @@ Stateless session based authentication service to manage authentication services
 - **Redis (where sessions live in)**
 - **Docker**
 - **Jest (testing)**
+
 
 # How it works
 - Starting by bootstraping the app, it creates http server and connects to mongodb and redis throught connection/infrastructure layer
@@ -66,38 +62,47 @@ Install dependencies
 ```
 
 - **Development**
-  - *Update .env file as .env.example file*
+
+  - _Update .env file as .env.example file_
 
     Run development enviroment
+
     ```bash
     npm run dev
     ```
+
 - **Production**
-  - *Update .env file as .env.example file*
+
+  - _Update .env file as .env.example file_
 
     Build/Compile typescript
+
     ```bash
     npm run build
     ```
+
     Run production server
+
     ```bash
     npm run start
     ```
+
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`PORT` *The http server port*
+`PORT` _The http server port_
 
-`MONGO_CONNECTION_STRING` *Mongo database connection string*
+`MONGO_CONNECTION_STRING` _Mongo database connection string_
 
-`REDIS_HOST` *Redis Server host*
+`REDIS_HOST` _Redis Server host_
 
-`REDIS_PORT` *Redis Server port*
+`REDIS_PORT` _Redis Server port_
 
-`ACCESS_TOKEN_SECRET` *JWT secret private key*
+`ACCESS_TOKEN_SECRET` _JWT secret private key_
 
-`ACCESS_TOKEN_EXPIRES_IN` *JWT expiration period*
+`ACCESS_TOKEN_EXPIRES_IN` _JWT expiration period_
+
 ## Test
 
 The application uses Jest for testing
@@ -105,6 +110,7 @@ The application uses Jest for testing
 ```sh
 npm run test
 ```
+
 ## Docker deployment
 
 The application is very easy to install and deploy in a Docker container.
@@ -124,6 +130,7 @@ This will create the the application image and pull in the necessary dependencie
 - Node application image
 
 Once done, run the Docker image and map the port to whatever you wish on your host.
+
 ## Screenshots
 
 #### Passed tests
@@ -133,5 +140,7 @@ Once done, run the Docker image and map the port to whatever you wish on your ho
 #### Postman api collection with examples
 
 ![alt text](https://i.imgur.com/DXFfd0r.png)
+
 ## 🔗 Postman Collection
+
 - https://documenter.getpostman.com/view/11631463/UyxnFR5F
