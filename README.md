@@ -49,7 +49,7 @@ Stateless session based authentication service to manage authentication services
 
 - If the protected route requires specific role/permission to be accessed, the application will compare this role/permission to the user role/allowed permissions
 
-- The app can force invalidating single or more sessions by destroys\ing the session from the redis store
+- The app can force invalidating single or more sessions by destroying the session from the redis store
 
 ## Installation
 
