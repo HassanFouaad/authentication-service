@@ -29,16 +29,26 @@ Stateless session based authentication service to manage authentication services
 
 
 # How it works
-- Starting by bootstraping the app, it creates http server and connects to mongodb and redis throught connection/infrastructure layer
+- Starting by bootstraping the app, it creates http server and connects to mongodb and redis through connection/infrastructure layer
+
 - Client can signup and signin through HTTP requests
+
 - The controller layer construct the sent client data from the request
-- The service layer handles business the authentication business logic
+
+- The service layer handles the authentication business logic
+
 - Repositories layer works as an interface for the database models
+
 - The app creates jwt token with contains some userdata and the session id
+
 - The app stores valid sessions in redis key/value store with a referenece to each user
+
 - When the client tries to access protected route it firstly check the jwt token validation/expiration etc and then retrieves/checks the session from the redis store
+
 - If session exists in the store, it will be considered as valid session
+
 - If the protected route requires specific role/permission to be accessed, the application will compare this role/permission to the user role/allowed permissions
+
 - The app can force invalidating single or more sessions by destroys the session from the redis store
 
 ## Installation
