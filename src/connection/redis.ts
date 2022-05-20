@@ -1,34 +1,46 @@
-import { createClient } from "redis";
+import { createClient, RedisClientType } from "redis";
 
 import { redisHost } from "../config";
 import { logger } from "../core";
 
-logger;
+class RedisConnection {
+  private redisClient: RedisClientType;
+  constructor() {
+    this.redisClient = createClient({ url: `redis://${redisHost}` });
+  }
 
-let redisClient = createClient({ url: `redis://${redisHost}` });
-(async () => {
-  redisClient.on("error", (err: any) => {
-    logger.error("Redis Error", err);
-    throw new Error(err.message);
-  });
+  connect() {
+    this.redisClient.connect();
+    this.logs();
+  }
+  get client() {
+    return this.redisClient;
+  }
 
-  redisClient.connect();
+  logs() {
+    this.redisClient.on("connect", () => {
+      logger.info("Redis has been Connected");
+    });
 
-  redisClient.on("connect", () => {
-    logger.info("Redis has been Connected");
-  });
+    this.redisClient.on("error", (err: any) => {
+      logger.error("Redis Error", err);
+      throw new Error(err.message);
+    });
 
-  redisClient.on("ready", () => {
-    logger.info("Redis connection is ready");
-  });
+    this.redisClient.on("ready", () => {
+      logger.info("Redis connection is ready");
+    });
 
-  redisClient.on("end", () => {
-    logger.error("Redis has been disconnected");
-  });
+    this.redisClient.on("end", () => {
+      logger.error("Redis has been disconnected");
+    });
+  }
+}
 
-  process.on("SIGINT", () => {
-    redisClient.quit();
-  });
-})();
+let redisConnection = new RedisConnection();
+
+redisConnection.connect();
+
+let redisClient = redisConnection.client;
 
 export default redisClient;

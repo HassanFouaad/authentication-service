@@ -16,10 +16,10 @@ services:
     restart: always
     build: .
     environment:
-      - PORT=5400
+      - PORT=9000
       - MONGO_CONNECTION_STRING=mongodb://mongo:27018/fatura_auth
       - REDIS_HOST=redis-server
       - ACCESS_TOKEN_SECRET=ACCESS_TOKEN_SECRET
       - ACCESS_TOKEN_EXPIRES_IN=15
     ports:
-      - "5400:5400"
+      - "9000:9000"

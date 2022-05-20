@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import redisClient from "../../../../connection/redis";
 import {
   logoutFromSingleSessionService,
   logoutFromAllSessionsService,

@@ -16,5 +16,5 @@ RUN npm install --only=production
 COPY --from=0 /home/g/fatura/dist .
 RUN npm install pm2 -g
 
-EXPOSE 5400
+EXPOSE 9000
 CMD ["pm2-runtime","index.js"]

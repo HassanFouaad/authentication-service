@@ -3,12 +3,20 @@ import faker from "@faker-js/faker";
 import { app } from "../src/app";
 import { mongoDBConnection } from "../src/connection/mongo";
 import { mongoConnectionString } from "../src/config";
-
+import { ObjectId } from "mongoose";
+import RoleModel from "../src/models/role.model";
+import UserModel from "../src/models/user.model";
+import { roles } from "../src/constants/rolesAndPermissions";
 jest.setTimeout(30000);
 let email: string;
 let username: string;
 let password: string;
 let name: string;
+
+const promoteUserToSuperAdmin = async (id: ObjectId) => {
+  let adminRole = await RoleModel.findOne({ name: roles.superAdmin.name });
+  return UserModel.updateOne({ _id: id }, { role: adminRole?.id });
+};
 
 beforeAll(async () => {
   mongoDBConnection(mongoConnectionString);
@@ -183,8 +191,28 @@ describe("GET /API/user/logout", () => {
 
 describe("GET /API/user/super-admin", () => {
   let token: string;
+  let userId: ObjectId;
 
   it("should return 403(Forbidden) when accessing non allowed route based on role", async () => {
+    const loginResponse = await request(app)
+      .post(`/api/user/login`)
+      .send({
+        email,
+        password,
+      })
+      .expect("Content-Type", /json/);
+    token = loginResponse.body.data.token;
+    userId = loginResponse.body.data.user.id;
+    const res = await request(app)
+      .get(`/api/user/super-admin`)
+      .expect("Content-Type", /json/)
+      .set("authorization", `Bearer ${token}`);
+
+    expect(res.statusCode).toEqual(403);
+  });
+
+  it("should return 200 when accessing allowed route based on role", async () => {
+    await promoteUserToSuperAdmin(userId);
     const loginResponse = await request(app)
       .post(`/api/user/login`)
       .send({
@@ -199,7 +227,7 @@ describe("GET /API/user/super-admin", () => {
       .expect("Content-Type", /json/)
       .set("authorization", `Bearer ${token}`);
 
-    expect(res.statusCode).toEqual(403);
+    expect(res.statusCode).toEqual(200);
   });
 });
 

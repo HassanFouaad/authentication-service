@@ -32,7 +32,6 @@ export const hasRole =
       name: roleName,
     });
 
-    console.log("allowed", allowed);
     if (!allowed) return next(new ServerError("Not Allowed", 403));
 
     next();
