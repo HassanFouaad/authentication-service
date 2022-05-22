@@ -75,6 +75,12 @@ Install dependencies
 
   - _Update .env file as .env.example file_
 
+    Run Seeders
+
+    ```bash
+    npm run seed
+    ```
+
     Run development enviroment
 
     ```bash
@@ -85,8 +91,15 @@ Install dependencies
 
   - _Update .env file as .env.example file_
 
-    Build/Compile typescript
 
+    Run Seeders
+
+    ```bash
+    npm run seed
+    ```
+
+
+    Build/Compile typescript
     ```bash
     npm run build
     ```

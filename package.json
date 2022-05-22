@@ -7,7 +7,9 @@
     "start": "node dist/index.js",
     "dev": "nodemon src/index.ts",
     "test": "ENV_FILE=./config/.env.test jest --forceExit --runInBand",
-    "build": "tsc -p ."
+    "build": "tsc -p .",
+    "seed": "ts-node ./src/seeders/rolesAndPermissions",
+    "seed:prod": "node ./dist/seeders/rolesAndPermissions"
   },
   "author": "Hassan Fouad",
   "license": "ISC",
