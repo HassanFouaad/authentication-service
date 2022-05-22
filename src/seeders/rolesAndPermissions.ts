@@ -9,7 +9,7 @@ import { roles } from "../constants/rolesAndPermissions";
 const seed = async () => {
   await mongoose.connect(mongoConnectionString);
   await Role.deleteMany({});
-
-  return await Role.insertMany(Object.values(roles));
+  await Role.insertMany(Object.values(roles));
+  return process.exit();
 };
 seed();
